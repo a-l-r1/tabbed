@@ -1305,8 +1305,17 @@ xsettitle(Window w, const char *str)
 
 	if (XmbTextListToTextProperty(dpy, (char **)&str, 1,
 	    XCompoundTextStyle, &xtp) == Success) {
-		XSetTextProperty(dpy, w, &xtp, wmatom[WMName]);
-		XSetTextProperty(dpy, w, &xtp, XA_WM_NAME);
+                int l = strlen(str);
+                XChangeProperty(dpy, win, 
+                    XInternAtom(dpy, "_NET_WM_NAME", False),
+                    XInternAtom(dpy, "UTF8_STRING", False),
+                    8, PropModeReplace, (unsigned char *)str,
+                    l);
+                XChangeProperty(dpy, win, 
+                    XInternAtom(dpy, "_WM_NAME", False),
+                    XInternAtom(dpy, "UTF8_STRING", False),
+                    8, PropModeReplace, (unsigned char *)str,
+                    l);
 		XFree(xtp.value);
 	}
 }

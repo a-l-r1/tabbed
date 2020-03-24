@@ -1,7 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
+static const char name[]        = "tabbed-alacritty";
+
 /* appearance */
-static const char font[]        = "monospace:size=9";
+static const char font[]        = "Fira Code:size=11";
 static const char* normbgcolor  = "#222222";
 static const char* normfgcolor  = "#cccccc";
 static const char* selbgcolor   = "#555555";
@@ -60,8 +62,9 @@ static Key keys[] = {
 
 	{ MODKEY|SHIFT,               XK_q,      killclient,  { 0 } },
 
-	/* { MODKEY,               XK_t,      focusurgent, { 0 } }, */
-	/* { MODKEY|SHIFT,         XK_t,      toggle,      { .v = (void*) &urgentswitch } }, */
+	{ MODKEY|SHIFT,               XK_grave,  focusurgent, { 0 } },
+	/* { MODKEY,                     XK_grave,  toggle,      { .v = (void*) &urgentswitch } }, */
 
 	{ 0,                    XK_F11,    fullscreen,  { 0 } },
 };
+
