@@ -1307,12 +1307,12 @@ xsettitle(Window w, const char *str)
 	    XCompoundTextStyle, &xtp) == Success) {
                 int l = strlen(str);
                 XChangeProperty(dpy, win, 
-                    XInternAtom(dpy, "_NET_WM_NAME", False),
+                    wmatom[WMName], 
                     XInternAtom(dpy, "UTF8_STRING", False),
                     8, PropModeReplace, (unsigned char *)str,
                     l);
                 XChangeProperty(dpy, win, 
-                    XInternAtom(dpy, "_WM_NAME", False),
+                    wmatom[WMName], 
                     XInternAtom(dpy, "UTF8_STRING", False),
                     8, PropModeReplace, (unsigned char *)str,
                     l);
