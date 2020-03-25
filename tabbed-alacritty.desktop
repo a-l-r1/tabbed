@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+TryExec=tabbed-alacritty
+Exec=tabbed-alacritty
+Icon=utilities-terminal
+Terminal=false
+Categories=Qt;KDE;System;TerminalEmulator;
+StartupNotify=false
+StartupWMClass=tabbed
+
+Name=Tabbed Alacritty
+Description=Fork of suckless tabbed for wrapping alacritty into a more modern terminal emulator.
+Exec=tabbed-alacritty
+

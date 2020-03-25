@@ -6,6 +6,8 @@ include config.mk
 SRC = tabbed.c xembed.c
 OBJ = ${SRC:.c=.o}
 BIN = ${OBJ:.o=}
+SCRIPTS = tabbed-alacritty
+DATA = tabbed-alacritty.desktop
 
 all: options ${BIN}
 
@@ -46,7 +48,10 @@ install: all
 	@echo installing executable files to ${DESTDIR}${PREFIX}/bin
 	@mkdir -p "${DESTDIR}${PREFIX}/bin"
 	@cp -f ${BIN} "${DESTDIR}${PREFIX}/bin"
+	@cp -f ${SCRIPTS} "${DESTDIR}${PREFIX}/bin"
+	@cp -f ${DATA} "${DESTDIR}${PREFIX}/share/applications"
 	@chmod 755 "${DESTDIR}${PREFIX}/bin/tabbed"
+	@chmod 755 "${DESTDIR}${PREFIX}/bin/tabbed-alacritty"
 	@echo installing manual pages to ${DESTDIR}${MANPREFIX}/man1
 	@mkdir -p "${DESTDIR}${MANPREFIX}/man1"
 	@sed "s/VERSION/${VERSION}/g" < tabbed.1 > "${DESTDIR}${MANPREFIX}/man1/tabbed.1"
@@ -58,6 +63,8 @@ uninstall:
 	@echo removing executable files from ${DESTDIR}${PREFIX}/bin
 	@rm -f "${DESTDIR}${PREFIX}/bin/tabbed"
 	@rm -f "${DESTDIR}${PREFIX}/bin/xembed"
+	@rm -f "${DESTDIR}${PREFIX}/bin/tabbed-alacritty"
+	@rm -f "${DESTDIR}${PREFIX}/share/applications/tabbed-alacritty.desktop"
 	@echo removing manual pages from ${DESTDIR}${MANPREFIX}/man1
 	@rm -f "${DESTDIR}${MANPREFIX}/man1/tabbed.1"
 	@rm -f "${DESTDIR}${MANPREFIX}/man1/xembed.1"
